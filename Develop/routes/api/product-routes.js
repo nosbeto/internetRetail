@@ -21,9 +21,12 @@ router.get("/:id", async (req, res) => {
     // find a single product by its `id`
     const productsData = await Product.findByPk(req.params.id, {
       // be sure to include its associated Category and Tag data
-      // JOIN with Category and Tags and creates a Category_Tags junction table
       // check this with TA
-      include : [{model: Category, through: Tag, as: 'Category_Tags'}]
+      include : 
+      [
+        {model: Category, attributes: category_name, through: Tag, as: 'category_tags'},
+        {model: Tag, attributes: tag_name, as: 'product_tag'}
+      ]
     });
     if (!productsData) {
       res.status(404).json({ message: 'No product found with this id!' });
