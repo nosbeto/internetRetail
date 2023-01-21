@@ -8,7 +8,10 @@ router.get("/", async (req, res) => {
     // find all categories
     const categoryData = await Category.findAll({
       // be sure to include its associated Products
-      include: Product,
+      include: [{
+        model:Product,
+        attributes: {exclude:["id","price","stock","category_id","categoryId"]}
+      }]
     });
     res.status(200).json(categoryData);
   } catch (err) {
@@ -23,7 +26,7 @@ router.get("/:id", async (req, res) => {
       // be sure to include its associated Products
       include: Product,
     });
-    if (!travellerData) {
+    if (!categoryData) {
       res.status(404).json({ message: "No traveller found with this id!" });
       return;
     }
@@ -46,7 +49,7 @@ router.post("/", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
   // update a category by its `id` value
-    const CategoryData = await Category.put({
+    const CategoryData = await Category.update(req.body,{
       where: {
         id: req.params.id,
       },
@@ -60,6 +63,7 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
 
 router.delete("/:id", async (req, res) => {
   try {
