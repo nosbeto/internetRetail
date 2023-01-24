@@ -10,6 +10,9 @@ I separated my endpoints in three big categories
 
 ![Screenshot](./Assets/demo.png)
 
+[Untitled_ Jan 23, 2023 10_04 PM.webm](https://user-images.githubusercontent.com/114036566/214205018-a3d301b8-802b-4c45-b8f6-0df23b8ac045.webm)
+
+
 For each category, the following requests are available to you:
 
 | Request | Endpoint | Description | 
