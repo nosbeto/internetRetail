@@ -8,6 +8,7 @@ I separated my endpoints in three big categories
 * `Categories`
 * `Tags`
 
+![Screenshot](./Assets/demo.png)
 
 For each category, the following requests are available to you:
 
